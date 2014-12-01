@@ -26,7 +26,7 @@ int main(void) {
     initMSP430();
 
     while (1) {
-    	if (packetIndex > 80) {
+    	if (packetIndex > 40) {
     				_disable_interrupt();
 
     				while(packetData[i] != 2 && i < 80){
@@ -42,7 +42,7 @@ int main(void) {
     				if(irPacket == CH_UP){
     					initRobot();
 
-    					moveForward(500);
+    					moveForward(50);
 
     					newPacket = TRUE;
     				}
@@ -50,7 +50,7 @@ int main(void) {
     				if(irPacket == CH_DW){
     					initRobot();
 
-    					moveBackward(500);
+    					moveBackward(50);
 
     					newPacket = TRUE;
     				}
@@ -58,7 +58,7 @@ int main(void) {
     				if(irPacket == VOL_UP){
     					initRobot();
 
-    					turnRight(500);
+    					turnRight(50);
 
     					newPacket = TRUE;
     				}
@@ -66,7 +66,7 @@ int main(void) {
     				if(irPacket == VOL_DW){
     					initRobot();
 
-    					turnLeft(500);
+    					turnLeft(50);
 
     					newPacket = TRUE;
     				}
@@ -84,7 +84,8 @@ int main(void) {
     				}
 
     				if(irPacket == PWR){
-
+    					newPacket = TRUE;
+    					shutDown();
     				}
 
     				if(newPacket == TRUE){
